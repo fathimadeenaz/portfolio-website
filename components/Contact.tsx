@@ -36,7 +36,7 @@ const Contact = () => {
             console.error("EmailJS Error:", error);
         } finally {
             setLoading(false);
-            toast.success("Message sent successfully. I&apos;ll get back to you soon!")
+            toast.success("Message sent successfully. I'll get back to you soon!")
         }
     };
 

@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Spline from "@splinetool/react-spline";
 import Planet from "./Planet";
 
 const Hero = () => {
+    const [splineLoaded, setSplineLoaded] = useState(false);
+
     return (
         <main
             id="hero"
@@ -38,7 +41,16 @@ const Hero = () => {
                 </Link>
             </div>
 
-            <Spline className="absolute -top-[15%] right-0 h-[120vh]!" scene="https://prod.spline.design/exYFM4saDefkkg59/scene.splinecode" />
+            {!splineLoaded && (
+                <div className="absolute inset-0 flex justify-center items-center z-50">
+                    <p className="text-white/50 text-base animate-pulse">Loading 3D...</p>
+                </div>
+            )}
+            <Spline
+                className="absolute -top-[15%] right-0 h-[120vh]!"
+                scene="https://prod.spline.design/exYFM4saDefkkg59/scene.splinecode"
+                onLoad={() => setSplineLoaded(true)}
+            />
             {/* <Planet /> */}
         </main>
     );
